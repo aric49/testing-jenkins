@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage('PreBuild') {
+            steps {
+                echo 'This is executing the prebuild steps.....'
+                sleep 10
+                echo "This is executing another prebuild step...'
+                env > variables.txt
+                cat variables.txt
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -20,5 +29,12 @@ pipeline {
                 sleep 10
             }
         }
+        stage('PostDeploy') {
+            steps {
+                echo 'Executing the post-deploy steps'
+                sleep 10
+                echo 'Checking if varibles.txt was preserved..."
+                cat variables.txt
+            }
     }
 }
