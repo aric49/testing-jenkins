@@ -36,5 +36,6 @@ pipeline {
                 echo "Checking if varibles.txt was preserved..."
                 cat variables.txt
             }
+        }
     }
 }
