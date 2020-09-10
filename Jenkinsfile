@@ -7,8 +7,8 @@ pipeline {
                 echo 'This is executing the prebuild steps.....'
                 sleep 10
                 echo "This is executing another prebuild step..."
-                /bin/bash -c "env > variables.txt"
-                /bin/bash -c "cat variables.txt"
+                sh("env > variables.txt")
+                sh("cat variables.txt")
             }
         }
         stage('Build') {
@@ -34,7 +34,7 @@ pipeline {
                 echo 'Executing the post-deploy steps'
                 sleep 10
                 echo "Checking if varibles.txt was preserved..."
-                /bin/bash -c "cat variables.txt"
+                sh("cat variables.txt")
             }
         }
     }
